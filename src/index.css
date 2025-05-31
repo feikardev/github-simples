@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+.header1 {
+    padding: 1rem 4rem;
+    position: absolute;
+}
+
+.form-pesquisar  {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0.2rem;
+}
+
+.input-pesquisar {
+    height: 40px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: solid 1px;
+}
+
+ .h1-repositorio {
+    margin: 20px;
+    display: flex;
+    padding-left: 100px;
+}
+
+.list-usuario {
+    height: 200px;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 1.95px 1.95px 2.6px rgba(0, 0, 0, 0.15);
+    list-style-type: none;
+    margin: 20px;
+    padding: 0.2rem;
+    float: left;
+    background-color: #686D76;
+    color: aliceblue;
+}
+
+.list-usuario li {
+    padding: 0.5rem 2rem;
+}
+
+.button1 {
+    width: 10%;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 1rem;
+    background-color: #686D76;
+    color: aliceblue;
+}
