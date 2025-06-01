@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+    font-family: monospace, sans-serif;
+}
+
 .header1 {
     padding: 1rem 4rem;
     position: absolute;
@@ -34,8 +38,9 @@
     margin: 20px;
     padding: 0.2rem;
     float: left;
-    background-color: #686D76;
-    color: aliceblue;
+    background-color: #24292E;
+    color: #FAFBFC;
+    overflow: auto;
 }
 
 .list-usuario li {
@@ -48,6 +53,6 @@
     border-radius: 20px;
     text-align: center;
     margin-left: 1rem;
-    background-color: #686D76;
-    color: aliceblue;
+    background-color: #24292E;
+    color: #FAFBFC;
 }

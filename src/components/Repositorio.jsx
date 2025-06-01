@@ -2,14 +2,16 @@ import { useState } from 'react'
 import { Heart, HeartOff } from 'lucide-react';
 
 
-export default function Repositorio(props) {
+export default function Repositorio() {
   const [clicou, setClicou] = useState(false)
-  const [pesquisou, setPesquisou] = useState(props.nomeUsuario)
-  const array10 = Array.from({ length: 10 })
-  
-  function handlePesquisar(formData) {
+  const [pesquisou, setPesquisou] = useState(null)
+  const [repositorios, setRepositorios] = useState([])
+  const array10 = repositorios.slice(0, 10)
+
+  async function handlePesquisar(formData) {
     const usuario = formData.get("usuario")
     setPesquisou(usuario)
+    await fetchRepositorios(usuario)
   }
 
   function handleClicou(id) {
@@ -17,8 +19,14 @@ export default function Repositorio(props) {
     setClicou((prevClicou) => ({
       ...prevClicou, [id]: !prevClicou[id]
     }))
-  } 
+  }
 
+  async function fetchRepositorios(usuario) {
+    const res = await fetch(`https://api.github.com/users/${usuario}/repos`)
+    const data = await res.json()
+    setRepositorios(data)
+  }
+  
   return (
     <>
       <header className="header1"><b>GitHub, mas simples</b></header>
@@ -36,15 +44,15 @@ export default function Repositorio(props) {
       (
       <>
         <h1 className="h1-repositorio">Repositórios de {pesquisou}</h1>
-        {array10.map((_, index) => (
-          <div className="div-repositorio" key={index}>
+        {array10.map((repositorio) => (
+          <div className="div-repositorio" key={repositorio.id}>
             <ul className="list-usuario">
-              <li>{props.nomeRepositorio}</li>
-              {props.descricao && <li>{props.descricao}</li>}
-              <li>Avaliação: {props.avaliacao}</li>
-              <li><a href={props.link}>Link</a></li>
-              <li onClick={() =>handleClicou(index)}>
-                {clicou[index] ? (<HeartOff />) : (<Heart />)}
+              <li>{repositorio.name}</li>
+              {repositorio.description ? <li>{repositorio.description}</li> : null}
+              <li>Avaliação: {repositorio.stargazers_count}</li>
+              <li><a href={repositorio.html_url}>Link</a></li>
+              <li onClick={() =>handleClicou(repositorio.id)}>
+                {clicou[repositorio.id] ? (<HeartOff />) : (<Heart />)}
               </li>
             </ul>
           </div>
