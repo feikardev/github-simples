@@ -23,6 +23,17 @@
     border: solid 1px;
 }
 
+.loader {
+    margin: auto;
+    display: flex;
+}
+
+.p-erro {
+    margin: 20px;
+    display: flex;
+    padding: 100px;
+}
+
  .h1-repositorio {
     margin: 20px;
     display: flex;
